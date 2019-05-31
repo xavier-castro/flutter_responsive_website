@@ -23,16 +23,3 @@ dependency_overrides:
     git:
       url: https://github.com/flutter/flutter_web
       path: packages/flutter_web_ui
-
-flutter:
-  fonts:
-    - family: Montserrat
-      fonts:
-        - asset: assets/Montserrat-Regular.ttf
-    - family: Montserrat-Bold
-      fonts:
-        - asset: assets/Montserrat-Bold.ttf
-  assets:
-    - menu.png
-    - image_01.png
-    - sent.png
