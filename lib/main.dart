@@ -106,7 +106,42 @@ class SmallChild extends StatelessWidget {
         padding: EdgeInsets.all(40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[],
+          children: <Widget>[
+            Text(
+              "Hello!",
+              style: TextStyle(
+                  fontSize: 60,
+                  fontFamily: "Montserrat-Regular",
+                  color: Color(0xFF8591B0)),
+            ),
+            RichText(
+              text: TextSpan(
+                  text: "Welcome To ",
+                  style: TextStyle(fontSize: 40, color: Color(0xFF8591B0)),
+                  children: [
+                    TextSpan(
+                        text: "Britu",
+                        style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87))
+                  ]),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0, top: 20),
+              child: Text("LET'S EXPLORE THE WORLD"),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Center(
+              child: Image.network('assets/image_01.png', scale: 1),
+            ),
+            Search(),
+            SizedBox(
+              height: 30,
+            )
+          ],
         ),
       ),
     );
