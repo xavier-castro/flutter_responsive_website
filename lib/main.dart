@@ -1,6 +1,7 @@
 import 'package:flutter_web/material.dart';
 import 'widgets/navbar.dart';
 import 'utils/responsiveLayout.dart';
+import 'widgets/search.dart';
 
 void main() => runApp(MaterialApp(
       title: 'Flutter Landing Page',
@@ -47,7 +48,7 @@ class LargeChild extends StatelessWidget {
             FractionallySizedBox(
               alignment: Alignment.centerRight,
               widthFactor: .6,
-              child: Image.network('assets/image_01.png'),
+              child: Image.network('assets/image_01.png', scale: 0.85),
             ),
             FractionallySizedBox(
               alignment: Alignment.centerLeft,
@@ -66,18 +67,27 @@ class LargeChild extends StatelessWidget {
                           color: Color(0xFF8591B0)),
                     ),
                     RichText(
-                        text: TextSpan(
-                            text: "Welcome To ",
-                            style: TextStyle(
-                                fontSize: 60, color: Color(0xFF8591B0)),
-                            children: [
-                          TextSpan(
-                              text: "Britu",
-                              style: TextStyle(
-                                  fontSize: 60,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87))
-                        ]))
+                      text: TextSpan(
+                          text: "Welcome To ",
+                          style:
+                              TextStyle(fontSize: 60, color: Color(0xFF8591B0)),
+                          children: [
+                            TextSpan(
+                                text: "Britu",
+                                style: TextStyle(
+                                    fontSize: 60,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87))
+                          ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12.0, top: 20),
+                      child: Text("LET'S EXPLORE THE WORLD"),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Search()
                   ],
                 ),
               ),
