@@ -1,61 +1,88 @@
 import 'package:flutter_web/material.dart';
+import 'widgets/navbar.dart';
+import 'utils/responsiveLayout.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(
+      title: 'Flutter Landing Page',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Montserrat'),
+      home: HomePage(),
+    ));
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+          Color(0xFFF8FBFF),
+          Color(0xFFFCFDFD),
+        ])),
+        child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: SingleChildScrollView(
+                child: Column(
+              children: <Widget>[NavBar(), Body()],
+            ))));
+  }
+}
+
+class Body extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveLayout(
+      largeScreen: LargeChild(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+class LargeChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (choose the "Toggle Debug Paint" action
-          // from the Flutter Inspector in Android Studio, or the "Toggle Debug
-          // Paint" command in Visual Studio Code) to see the wireframe for each
-          // widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+    return SizedBox(
+        height: 600,
+        child: Stack(
+          fit: StackFit.expand,
           children: <Widget>[
-            Text(
-              'Hello, World!',
+            FractionallySizedBox(
+              alignment: Alignment.centerRight,
+              widthFactor: .6,
+              child: Image.network("assets/image_01.png", scale: .85),
             ),
+            FractionallySizedBox(
+              alignment: Alignment.centerLeft,
+              widthFactor: .6,
+              child: Padding(
+                padding: EdgeInsets.only(left: 48),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "Hello!",
+                      style: TextStyle(
+                          fontSize: 60,
+                          fontFamily: "Montserrat-Regular",
+                          color: Color(0xFF8591B0)),
+                    ),
+                    RichText(
+                        text: TextSpan(
+                            text: "Welcome To ",
+                            style: TextStyle(
+                                fontSize: 60, color: Color(0xFF8591B0)),
+                            children: [
+                          TextSpan(
+                              text: "Britu",
+                              style: TextStyle(
+                                  fontSize: 60,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black87))
+                        ]))
+                  ],
+                ),
+              ),
+            )
           ],
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        ));
   }
 }
