@@ -33,6 +33,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       largeScreen: LargeChild(),
+      smallScreen: SmallChild(),
     );
   }
 }
@@ -94,5 +95,20 @@ class LargeChild extends StatelessWidget {
             )
           ],
         ));
+  }
+}
+
+class SmallChild extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[],
+        ),
+      ),
+    );
   }
 }
